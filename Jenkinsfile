@@ -4,9 +4,16 @@ pipeline {
             image 'node:21-alpine'
         }
     }
+    
+    options {
+        timeout(time: 1, unit: "HOURS")
+    }
 
     stages {
         stage('Build') {
+            options {
+                timestamps()
+            }
             steps {
                 sh 'npm -v'
             }
